@@ -1,0 +1,93 @@
+body {
+    font-family: 'Arial', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    margin: 50px;;
+}
+
+.container {
+    max-width: 720px;
+    margin-top: 4vmin;
+    margin: 0 auto;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: darkred;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.ProbForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* font-size: calc(8px + 2vmin); */
+  /* color: white; */
+}
+
+.ProbForm-label {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.ProbForm-input {
+    /* display: block; */
+    /* width: 100%; */
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.Probform-fieldset {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.Probform-radio-label {
+    margin-right: 20px;
+    font-weight: bold;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.Probform-radio-input {
+    margin-right: 5px;
+    transform: scale(1.1);
+}
+
+.ProbForm-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.ProbForm-button:hover {
+    background-color: #0056b3;
+}
