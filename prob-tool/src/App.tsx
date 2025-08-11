@@ -5,17 +5,35 @@ import ProbRes from "./components/ProbRes";
 import { ProbData } from "./interfaces/ProbData";
 
 function App() {
+  //const BASE_URL = "http://localhost:5224/";
+  const BASE_URL = "https://localhost:7159/";
   const [result, setResult] = useState<number | null>(null);
 
   const calculate = (formData: ProbData) => {
-    dummyCalc(formData);
+    callApi(formData);
   };
 
   const clearResult = () => setResult(null);
 
-  const dummyCalc = (formData: ProbData) => {
-    const calculatedResult = formData.prob1 * formData.prob2; // Example calculation
-    setResult(calculatedResult);
+  const callApi = (formData: ProbData) => {
+    fetch(`${BASE_URL}calc`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.debug("Calculation Result:", data);
+        setResult(data.result);
+      })
+      .catch((error) => {
+        console.error("Error during calculation:", error);
+        alert("An error occurred while calculating the result.");
+        setResult(null);
+      });
   };
 
   return (
