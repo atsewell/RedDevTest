@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ProbData } from "../interfaces/ProbData";
+import { ProbFormProps } from "../interfaces/ProbFormProps";
 
 interface ErrorMessageState {
   prob1: string;
@@ -7,7 +8,7 @@ interface ErrorMessageState {
   probFun: string;
 }
 
-const ProbForm = () => {
+const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
   const [formData, setFormData] = useState({
     prob1: 0,
     prob2: 0,
@@ -38,13 +39,15 @@ const ProbForm = () => {
       alert("Please complete the form");
       return;
     }
-    console.log("Form Data:", formData);
+    console.debug("Form Data:", formData);
+    onSubmit && onSubmit(formData);
   };
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    handleValidation(e.target);
-    setFormData({ ...formData, [name]: value });
+    const { name } = e.target;
+    const setValue = handleValidation(e.target);
+    setFormData({ ...formData, [name]: setValue });
+    clearResult && clearResult();
   };
 
   const updateErrorState = (
@@ -60,7 +63,7 @@ const ProbForm = () => {
   const isValidProb = (value: any): boolean =>
     value && !isNaN(value) && parseFloat(value) > 0 && parseFloat(value) <= 1;
 
-  const handleValidation = (target: EventTarget) => {
+  const handleValidation = (target: EventTarget): any => {
     const input = target as HTMLInputElement;
     const { name, value } = input;
 
@@ -74,7 +77,7 @@ const ProbForm = () => {
         } else {
           updateErrorState("prob1", "");
         }
-        break;
+        return parseFloat(value);
       case "prob2":
         if (!isValidProb(value)) {
           updateErrorState(
@@ -84,21 +87,22 @@ const ProbForm = () => {
         } else {
           updateErrorState("prob2", "");
         }
-        break;
+        return parseFloat(value);
       default:
-        break;
+        return value;
     }
   };
 
   return (
     <div className="ProbForm">
       <form onSubmit={handleSubmit()} aria-label="Probability Form">
-        <fieldset className="Probform-fieldset">
-          <legend>Function</legend>
+        <fieldset data-testid="probFun-fields" className="Probform-fieldset">
+          <legend className="Probform-legend">Function</legend>
           {Object.entries(funcLabels).map(([value, label]) => (
             <label key={value} className="Probform-radio-label">
               <input
                 type="radio"
+                data-testid={`probFun-${value}`}
                 name="probFun"
                 value={value}
                 checked={formData.probFun === value}
@@ -115,6 +119,7 @@ const ProbForm = () => {
           <input
             type="text"
             inputMode="numeric"
+            placeholder="fractional probability e.g. 0.5"
             name="prob1"
             aria-label="Probability 1:"
             id="prob1"
@@ -122,13 +127,21 @@ const ProbForm = () => {
             onChange={handleFieldChange}
           />
         </label>
-        {errors.prob1 && <p role="alert">{errors.prob1}</p>}
-        <br />
+        {errors.prob1 && (
+          <p
+            role="alert"
+            aria-label="probability 1 alert"
+            className="Probform-alert"
+          >
+            {errors.prob1}
+          </p>
+        )}
         <label className="ProbForm-label">
           Probability 2:
           <input
             type="text"
             inputMode="numeric"
+            placeholder="fractional probability e.g. 0.5"
             name="prob2"
             aria-label="Probability 2:"
             id="prob2"
@@ -136,11 +149,18 @@ const ProbForm = () => {
             onChange={handleFieldChange}
           />
         </label>
-        {errors.prob2 && <p role="alert">{errors.prob2}</p>}
-        <br />
+        {errors.prob2 && (
+          <p
+            role="alert"
+            aria-label="probability 2 alert"
+            className="Probform-alert"
+          >
+            {errors.prob2}
+          </p>
+        )}
         <br />
         <button type="submit" className="ProbForm-button">
-          Submit
+          Calculate
         </button>
       </form>
     </div>

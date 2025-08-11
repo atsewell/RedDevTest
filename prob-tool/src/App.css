@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    color: #333;
+    color: darkred;
 }
 
 h1 {
-    margin: 50px;;
+    margin: 35px;
 }
 
 .container {
@@ -36,12 +36,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(8px + 2vmin); */
-  /* color: white; */
 }
 
 .ProbForm-label {
     display: block;
+    font-weight: bold;
     padding-bottom: 10px;
 }
 
@@ -49,26 +48,34 @@ h1 {
     /* display: block; */
     /* width: 100%; */
     padding: 8px;
+    margin-left: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid lightcoral;
 }
 
 .Probform-fieldset {
     border: 1px solid #ccc;
-    margin: 10px 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border: 1px solid lightcoral;
+}
+
+.Probform-legend {
+    font-size: 0.9em;
+    text-align: left;
 }
 
 .Probform-radio-label {
     margin-right: 20px;
     font-weight: bold;
-    color: #555;
+    /* color: #555; */
     display: flex;
     align-items: center;
 }
@@ -79,15 +86,41 @@ h1 {
 }
 
 .ProbForm-button {
-    background-color: #007bff;
+    background-color: darkred;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
+    font-size: 1em;
 }
 
 .ProbForm-button:hover {
-    background-color: #0056b3;
+    background-color: #700808;
+}
+
+p[role="alert"] {
+    color: red;
+    font-weight: bold;
+    margin-top: 0px;
+    font-size: 0.9em;
+}
+
+.ProbRes {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: lightcoral;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ProbRes-result {
+    font-size: 1.2em;
+    color: darkred;
+    margin-top: 10px;
 }
