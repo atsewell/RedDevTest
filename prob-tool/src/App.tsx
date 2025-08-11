@@ -5,8 +5,7 @@ import ProbRes from "./components/ProbRes";
 import { ProbData } from "./interfaces/ProbData";
 
 function App() {
-  //const BASE_URL = "http://localhost:5224/";
-  const BASE_URL = "https://localhost:7159/";
+  const ApiBaseUrl = process.env.REACT_APP_API_URL;
   const [result, setResult] = useState<number | null>(null);
 
   const calculate = (formData: ProbData) => {
@@ -16,7 +15,7 @@ function App() {
   const clearResult = () => setResult(null);
 
   const callApi = (formData: ProbData) => {
-    fetch(`${BASE_URL}calc`, {
+    fetch(`${ApiBaseUrl}calc`, {
       method: "POST",
       mode: "cors",
       headers: {

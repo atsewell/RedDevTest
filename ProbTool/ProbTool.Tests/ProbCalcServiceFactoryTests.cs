@@ -3,7 +3,7 @@
 public class ProbCalcServiceFactoryTests
 {
   [Fact]
-  public void CreateProbCalcService_WithCombined_ReturnsProbCalcCombinedService()
+  public void CreateProbCalcService_Combined_returns_ProbCalcCombinedService()
   {
     // Arrange
     var factory = new ProbCalcServiceFactory();
@@ -16,7 +16,7 @@ public class ProbCalcServiceFactoryTests
   }
 
   [Fact]
-  public void CreateProbCalcService_WithEither_ReturnsProbCalcEitherService()
+  public void CreateProbCalcService_Either_returns_ProbCalcEitherService()
   {
     // Arrange
     var factory = new ProbCalcServiceFactory();
@@ -29,7 +29,7 @@ public class ProbCalcServiceFactoryTests
   }
 
   [Fact]
-  public void CreateProbCalcService_WithInvalidType_ThrowsException()
+  public void CreateProbCalcService_with_invalid_type_throws_exception()
   {
     // Arrange
     var factory = new ProbCalcServiceFactory();

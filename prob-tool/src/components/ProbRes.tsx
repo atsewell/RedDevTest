@@ -7,7 +7,7 @@ const ProbRes = ({ result }: ProbResProps) => {
   }
 
   return (
-    <div>
+    <div className="ProbRes">
       <h2>Result</h2>
       <div className="ProbRes-result">{result ?? "no result"}</div>
     </div>

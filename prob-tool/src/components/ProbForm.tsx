@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ProbData } from "../interfaces/ProbData";
 import { ProbFormProps } from "../interfaces/ProbFormProps";
-import { clear } from "console";
 
 interface ErrorMessageState {
   prob1: string;

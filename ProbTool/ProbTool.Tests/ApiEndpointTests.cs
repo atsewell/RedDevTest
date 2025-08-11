@@ -12,7 +12,7 @@ public class ApiEndpointTests(WebApplicationFactory<Program> factory) : IClassFi
   [Theory]
   [InlineData("Combined", 0.5, 0.4, 0.2000)]
   [InlineData("Either", 0.5, 0.4, 0.7000)]
-  public async Task CalcEndpoint_ReturnsExpectedResult(string probFun, decimal prob1, decimal prob2, decimal expected)
+  public async Task Calc_endpoint_returns_expected_result(string probFun, decimal prob1, decimal prob2, decimal expected)
   {
     var client = _factory.CreateClient();
     var request = new ProbRequest(probFun, prob1, prob2);
@@ -31,7 +31,7 @@ public class ApiEndpointTests(WebApplicationFactory<Program> factory) : IClassFi
   [InlineData("InvalidFun", 0.5, 0.4)]
   [InlineData("Combined", -1, 0.4)]
   [InlineData("Combined", 0.5, 2)]
-  public async Task CalcEndpoint_ReturnsValidationProblem_ForInvalidRequest(string probFun, decimal prob1, decimal prob2)
+  public async Task Calc_endpoint_returns_ValidationProblem_when_request_is_invalid(string probFun, decimal prob1, decimal prob2)
   {
     var client = _factory.CreateClient();
     var request = new ProbRequest(probFun, prob1, prob2);
