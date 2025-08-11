@@ -8,6 +8,11 @@ interface ErrorMessageState {
   probFun: string;
 }
 
+const funcLabels = {
+  Combined: "CombinedWith",
+  Either: "Either",
+};
+
 const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
   const [formData, setFormData] = useState({
     prob1: 0,
@@ -19,11 +24,6 @@ const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
     prob2: "",
     probFun: "",
   } as ErrorMessageState);
-
-  const funcLabels = {
-    Combined: "CombinedWith",
-    Either: "Either",
-  };
 
   const formIsValid = () =>
     errors.prob1 === "" &&
@@ -72,7 +72,7 @@ const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
         if (!isValidProb(value)) {
           updateErrorState(
             "prob1",
-            "Probability must be greater than 0 and less than 1."
+            "Probability must be greater than 0 and less than or equal to 1."
           );
         } else {
           updateErrorState("prob1", "");
@@ -82,7 +82,7 @@ const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
         if (!isValidProb(value)) {
           updateErrorState(
             "prob2",
-            "Probability must be greater than 0 and less than 1."
+            "Probability must be greater than 0 and less than or equal to 1."
           );
         } else {
           updateErrorState("prob2", "");
