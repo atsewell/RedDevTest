@@ -3,11 +3,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    color: #333;
+    color: darkred;
 }
 
 h1 {
-    margin: 50px;;
+    margin: 50px;
 }
 
 .container {
@@ -36,12 +36,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(8px + 2vmin); */
-  /* color: white; */
 }
 
 .ProbForm-label {
     display: block;
+    font-weight: bold;
     padding-bottom: 10px;
 }
 
@@ -49,10 +48,11 @@ h1 {
     /* display: block; */
     /* width: 100%; */
     padding: 8px;
+    margin-left: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid lightcoral;
 }
 
 .Probform-fieldset {
@@ -63,12 +63,18 @@ h1 {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border: 1px solid lightcoral;
+}
+
+.Probform-legend {
+    font-size: 0.9em;
+    text-align: left;
 }
 
 .Probform-radio-label {
     margin-right: 20px;
     font-weight: bold;
-    color: #555;
+    /* color: #555; */
     display: flex;
     align-items: center;
 }
@@ -79,7 +85,7 @@ h1 {
 }
 
 .ProbForm-button {
-    background-color: #007bff;
+    background-color: darkred;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -89,5 +95,12 @@ h1 {
 }
 
 .ProbForm-button:hover {
-    background-color: #0056b3;
+    background-color: #700808;
+}
+
+p[role="alert"] {
+    color: red;
+    font-weight: bold;
+    margin-top: 0px;
+    font-size: 0.9em;
 }

@@ -94,7 +94,7 @@ const ProbForm = () => {
     <div className="ProbForm">
       <form onSubmit={handleSubmit()} aria-label="Probability Form">
         <fieldset className="Probform-fieldset">
-          <legend>Function</legend>
+          <legend className="Probform-legend">Function</legend>
           {Object.entries(funcLabels).map(([value, label]) => (
             <label key={value} className="Probform-radio-label">
               <input
@@ -115,6 +115,7 @@ const ProbForm = () => {
           <input
             type="text"
             inputMode="numeric"
+            placeholder="fractional probability e.g. 0.5"
             name="prob1"
             aria-label="Probability 1:"
             id="prob1"
@@ -129,6 +130,7 @@ const ProbForm = () => {
           <input
             type="text"
             inputMode="numeric"
+            placeholder="fractional probability e.g. 0.5"
             name="prob2"
             aria-label="Probability 2:"
             id="prob2"
@@ -136,7 +138,11 @@ const ProbForm = () => {
             onChange={handleFieldChange}
           />
         </label>
-        {errors.prob2 && <p role="alert">{errors.prob2}</p>}
+        {errors.prob2 && (
+          <p role="alert" className="Probform-alert">
+            {errors.prob2}
+          </p>
+        )}
         <br />
         <br />
         <button type="submit" className="ProbForm-button">
