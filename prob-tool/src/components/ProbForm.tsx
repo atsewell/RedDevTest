@@ -15,23 +15,23 @@ const funcLabels = {
 
 const ProbForm = ({ onSubmit, clearResult }: ProbFormProps) => {
   const [formData, setFormData] = useState({
+    probFun: Object.keys(funcLabels)[0],
     prob1: 0,
     prob2: 0,
-    probFun: "",
   } as ProbData);
   const [errors, setErrors] = useState({
+    probFun: "",
     prob1: "",
     prob2: "",
-    probFun: "",
   } as ErrorMessageState);
 
   const formIsValid = () =>
+    errors.probFun === "" &&
     errors.prob1 === "" &&
     errors.prob2 === "" &&
-    errors.probFun === "" &&
+    formData.probFun &&
     formData.prob1 &&
-    formData.prob2 &&
-    formData.probFun;
+    formData.prob2;
 
   const handleSubmit = () => (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
